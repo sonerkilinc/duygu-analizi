@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+       <script>
+               $(document).ready(function(){
+		       $(".btn").click(function(){
+			 $("#result").html("");
+                         $(".lds-roller").css('display','inline-block');
+                       var scode = $("input").val();
+                       $.post("measure.php",{
+                       shortcode:scode
+                               },function(data,status){
+                                       $("#result").html(data);
+                                       $(".lds-roller").css('display','none');
+                               });
+                       });
+
+               });
+       </script>
+  </head>
+  <body>
+    <div class="holder">
+      <h1>Pozitiflik/Negatiflik testi</h1>
+      <input class="txt" placeholder="Shortcode giriniz."type="text">
+<div class="btn-div">
+<input type="button" value="" class="btn" />
+</div>
+<br>
+<div class="lds-roller" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+<p id="result"></p>
+    </div>
+
+  </body>
+</html>
